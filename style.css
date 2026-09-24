@@ -82,6 +82,12 @@ h3 {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
+.destino-link {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+}
+
 .destinos-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -107,4 +113,153 @@ h3 {
 
 .destino p {
   margin-bottom: 20px;
+}
+
+.imagem-destino {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Página individual de Pipa */
+.pipa-page {
+  background-color: #f7fbfc;
+}
+
+.pipa-hero {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  padding: 0;
+  overflow: hidden;
+  text-align: left;
+  background-color: #004b63;
+}
+
+.pipa-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.58));
+}
+
+.pipa-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 55%;
+  display: block;
+}
+
+.pipa-hero-content {
+  position: absolute;
+  left: 50%;
+  bottom: 32px;
+  z-index: 1;
+  width: calc(100% - 40px);
+  max-width: 980px;
+  transform: translateX(-50%);
+  color: #ffffff;
+}
+
+.pipa-hero-content p {
+  margin: 0 0 8px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.pipa-hero-content h1 {
+  margin: 0 0 8px;
+  color: #ffffff;
+  font-size: 2.8rem;
+}
+
+.pipa-hero-content span {
+  font-size: 1.05rem;
+}
+
+.pipa-main {
+  max-width: 980px;
+}
+
+.pipa-section {
+  padding: 36px 20px;
+}
+
+.pipa-introducao p {
+  max-width: 760px;
+  font-size: 1.08rem;
+}
+
+.pipa-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.pipa-cards-grid-quatro {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.pipa-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 22px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.pipa-card h3 {
+  margin-top: 12px;
+}
+
+.pipa-card ul {
+  padding-left: 20px;
+  margin-bottom: 0;
+}
+
+.pipa-card-categoria {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 20px;
+  background-color: #e0f3f8;
+  color: #006b8f;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.pipa-card-destaque {
+  max-width: 720px;
+}
+
+.pipa-voltar {
+  padding-top: 8px;
+}
+
+.pipa-botao-voltar {
+  display: inline-block;
+  padding: 12px 18px;
+  border-radius: 8px;
+  background-color: #006b8f;
+  color: #ffffff;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.pipa-botao-voltar:hover {
+  background-color: #004b63;
+}
+
+@media (max-width: 800px) {
+  .pipa-hero {
+    height: 220px;
+  }
+
+  .pipa-hero-content h1 {
+    font-size: 2.1rem;
+  }
+
+  .pipa-cards-grid,
+  .pipa-cards-grid-quatro {
+    grid-template-columns: 1fr;
+  }
 }
