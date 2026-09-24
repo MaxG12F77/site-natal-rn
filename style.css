@@ -71,8 +71,15 @@ h3 {
 
 .destino {
   background-color: #f2f8fa;
-  padding: 20px;
-  margin-bottom: 20px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.destino:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
 .destinos-grid {
@@ -86,4 +93,18 @@ h3 {
   height: 220px;
   object-fit: cover;
   display: block;
+}
+
+.destino h3,
+.destino p {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.destino h3 {
+  margin-top: 20px;
+}
+
+.destino p {
+  margin-bottom: 20px;
 }
