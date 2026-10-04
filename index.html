@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="style.css">
+        <script src="script.js" defer></script>
         <title>Turismo Natal RN - Guia de Viagem</title>
     </head>
     <body>
@@ -13,11 +14,43 @@
             <p>Descubra Natal e o litoral do Rio Grande do Norte.</p>
 
             <!-- Menu de navegação -->
-            <nav>
-                <ul>
+            <nav aria-label="Menu principal">
+                <ul class="menu-principal">
                     <li><a href="#inicio">Início</a></li>
-                    <li><a href="#destinos">Destinos</a></li>
                     <li><a href="#praias">Praias</a></li>
+                    <li class="nav-dropdown">
+                        <div class="nav-dropdown-topo">
+                            <a href="#destinos">Destinos</a>
+                            <button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="submenu-destinos">
+                                <span aria-hidden="true">▼</span>
+                                <span class="sr-only">Abrir menu de destinos</span>
+                            </button>
+                        </div>
+
+                        <ul class="submenu-destinos" id="submenu-destinos">
+                            <li>
+                                <span class="submenu-em-breve">Praia de Ponta Negra <span>Em breve</span></span>
+                            </li>
+                            <li><a href="destinos/pipa.html">Praia de Pipa</a></li>
+                            <li><a href="destinos/genipabu.html">Praia de Genipabu</a></li>
+                            <li><a href="destinos/maracajau.html">Praia de Maracajaú</a></li>
+                            <li>
+                                <span class="submenu-em-breve">Praia dos Artistas <span>Em breve</span></span>
+                            </li>
+                            <li>
+                                <span class="submenu-em-breve">Praia de Cotovelo <span>Em breve</span></span>
+                            </li>
+                            <li>
+                                <span class="submenu-em-breve">Praia de Camurupim <span>Em breve</span></span>
+                            </li>
+                            <li>
+                                <span class="submenu-em-breve">Praia de São Miguel do Gostoso <span>Em breve</span></span>
+                            </li>
+                            <li>
+                                <span class="submenu-em-breve">Barra de Cunhaú <span>Em breve</span></span>
+                            </li>
+                        </ul>
+                    </li>
                     <li><a href="#dicas">Dicas</a></li>
                     <li><a href="#contato">Contato</a></li>
                 </ul>
@@ -41,6 +74,30 @@
                 </p>
             </section>
 
+            <!-- Seção de praias -->
+            <section id="praias">
+                <h2>Praias para Conhecer</h2>
+                <p>
+                    O litoral do Rio Grande do Norte reúne praias urbanas,
+                    praias mais reservadas e cenários perfeitos para descansar.
+                </p>
+
+                <ul>
+                    <li>Praia de Ponta Negra</li>
+                    <li>Praia de Pipa / Praia do Centro</li>
+                    <li>Praia de Genipabu</li>
+                    <li>Praia de Maracajaú</li>
+                    <li>Praia dos Artistas</li>
+                    <li>Praia de Cotovelo</li>
+                    <li>Praia de Camurupim</li>
+                    <li>Praia de São Miguel do Gostoso</li>
+                    <li>Barra de Cunhaú</li>
+                    <li>Praia do Amor</li>
+                    <li>Baía dos Golfinhos</li>
+                    <li>Praia do Madeiro</li>
+                </ul>
+            </section>
+
             <!-- Seção de destinos -->
             <section id="destinos">
                 <h2>Destinos no Rio Grande do Norte</h2>
@@ -50,6 +107,15 @@
                 </p>
 
                 <div class="destinos-grid">
+                    <article class="destino destino-em-breve">
+                        <div class="destino-placeholder">
+                            <span>Conteúdo em breve</span>
+                        </div>
+                        <h3>Praia de Ponta Negra</h3>
+                        <p>Conteúdo em breve.</p>
+                        <span class="destino-status">Em breve</span>
+                    </article>
+
                     <a class="destino-link" href="destinos/pipa.html">
                         <article class="destino">
                             <img src="imagens/pipa.jpg" alt="Praia de Pipa">
@@ -58,6 +124,7 @@
                                 Um dos destinos mais conhecidos do litoral potiguar, com
                                 praias, falésias, vida noturna e contato com a natureza.
                             </p>
+                            <span class="destino-cta">Conheça Pipa →</span>
                         </article>
                     </a>
 
@@ -69,6 +136,7 @@
                                 Famosa pelos passeios de buggy, pelas dunas e pelas
                                 lagoas que fazem parte do roteiro turístico de Natal.
                             </p>
+                            <span class="destino-cta">Conheça Genipabu →</span>
                         </article>
                     </a>
 
@@ -80,26 +148,55 @@
                                 Conhecida pelos parrachos, piscinas naturais ideais para
                                 mergulho e observação da vida marinha.
                             </p>
+                            <span class="destino-cta">Conheça Maracajaú →</span>
                         </article>
                     </a>
+
+                    <article class="destino destino-em-breve">
+                        <div class="destino-placeholder">
+                            <span>Conteúdo em breve</span>
+                        </div>
+                        <h3>Praia dos Artistas</h3>
+                        <p>Conteúdo em breve.</p>
+                        <span class="destino-status">Em breve</span>
+                    </article>
+
+                    <article class="destino destino-em-breve">
+                        <div class="destino-placeholder">
+                            <span>Conteúdo em breve</span>
+                        </div>
+                        <h3>Praia de Cotovelo</h3>
+                        <p>Conteúdo em breve.</p>
+                        <span class="destino-status">Em breve</span>
+                    </article>
+
+                    <article class="destino destino-em-breve">
+                        <div class="destino-placeholder">
+                            <span>Conteúdo em breve</span>
+                        </div>
+                        <h3>Praia de Camurupim</h3>
+                        <p>Conteúdo em breve.</p>
+                        <span class="destino-status">Em breve</span>
+                    </article>
+
+                    <article class="destino destino-em-breve">
+                        <div class="destino-placeholder">
+                            <span>Conteúdo em breve</span>
+                        </div>
+                        <h3>Praia de São Miguel do Gostoso</h3>
+                        <p>Conteúdo em breve.</p>
+                        <span class="destino-status">Em breve</span>
+                    </article>
+
+                    <article class="destino destino-em-breve">
+                        <div class="destino-placeholder">
+                            <span>Conteúdo em breve</span>
+                        </div>
+                        <h3>Barra de Cunhaú</h3>
+                        <p>Conteúdo em breve.</p>
+                        <span class="destino-status">Em breve</span>
+                    </article>
                 </div>
-            </section>
-
-            <!-- Seção de praias -->
-            <section id="praias">
-                <h2>Praias para Conhecer</h2>
-                <p>
-                    O litoral do Rio Grande do Norte reúne praias urbanas,
-                    praias mais reservadas e cenários perfeitos para descansar.
-                </p>
-
-                <ul>
-                    <li>Praia de Ponta Negra</li>
-                    <li>Praia dos Artistas</li>
-                    <li>Praia de Cotovelo</li>
-                    <li>Praia de Camurupim</li>
-                    <li>Praia de São Miguel do Gostoso</li>
-                </ul>
             </section>
 
             <!-- Seção de artigos -->

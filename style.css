@@ -42,6 +42,18 @@ nav a:hover {
   text-decoration: underline;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* Conteúdo principal */
 main {
   width: 100%;
@@ -56,13 +68,15 @@ section {
 
 /* Cabeçalho Hero da página inicial */
 .home-header {
+  position: relative;
+  z-index: 2;
   min-height: 540px;
   padding: 72px 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  overflow: visible;
   text-align: center;
   background-image: linear-gradient(rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.56)), url("imagens/Morro_do_Careca2.jpg");
   background-size: cover;
@@ -85,26 +99,137 @@ section {
   font-size: 1.15rem;
 }
 
-.home-header nav ul {
+.home-header nav {
+  position: relative;
+}
+
+.home-header .menu-principal {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
   gap: 12px 22px;
 }
 
-.home-header nav li {
+.home-header .menu-principal > li {
   margin: 0;
 }
 
-.home-header nav a {
+.home-header nav a,
+.nav-dropdown-toggle {
   color: #ffffff;
   font-weight: bold;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
 }
 
-.home-header nav a:hover {
+.home-header nav a:hover,
+.nav-dropdown-toggle:hover {
   color: #d7eef5;
   text-decoration: none;
+}
+
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 12px;
+}
+
+.nav-dropdown-topo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.nav-dropdown-toggle {
+  min-width: 34px;
+  min-height: 34px;
+  padding: 4px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+}
+
+.submenu-destinos {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  z-index: 10;
+  width: min(330px, calc(100vw - 32px));
+  padding: 10px;
+  margin: 0;
+  list-style: none;
+  text-align: left;
+  background-color: #ffffff;
+  border: 1px solid #d7eef5;
+  border-radius: 10px;
+  box-shadow: 0 12px 28px rgba(0, 75, 99, 0.18);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(-50%) translateY(-6px);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
+}
+
+.nav-dropdown:hover .submenu-destinos,
+.nav-dropdown:focus-within .submenu-destinos,
+.nav-dropdown.is-open .submenu-destinos {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.submenu-destinos li {
+  display: block;
+  margin: 0;
+}
+
+.submenu-destinos a,
+.submenu-em-breve {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 42px;
+  padding: 9px 10px;
+  border-radius: 8px;
+  color: #004b63;
+  font-size: 0.95rem;
+  font-weight: bold;
+  text-decoration: none;
+  text-shadow: none;
+}
+
+.submenu-destinos a:hover,
+.submenu-destinos a:focus {
+  background-color: #e0f3f8;
+  color: #004b63;
+  outline: none;
+}
+
+.submenu-em-breve {
+  color: #60767d;
+}
+
+.submenu-em-breve span,
+.destino-status {
+  padding: 3px 7px;
+  border-radius: 999px;
+  background-color: #e0f3f8;
+  color: #006b8f;
+  font-size: 0.78rem;
+  font-weight: bold;
+  white-space: nowrap;
 }
 
 /* Títulos */
@@ -130,6 +255,8 @@ h3 {
 }
 
 .destino {
+  display: flex;
+  flex-direction: column;
   background-color: #f2f8fa;
   border-radius: 12px;
   overflow: hidden;
@@ -137,7 +264,8 @@ h3 {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.destino:hover {
+.destino-link:hover .destino,
+.destino-link:focus-visible .destino {
   transform: translateY(-4px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
@@ -146,6 +274,18 @@ h3 {
   color: inherit;
   text-decoration: none;
   display: block;
+  height: 100%;
+  border-radius: 12px;
+}
+
+.destino-link:hover,
+.destino-link:focus {
+  text-decoration: none;
+}
+
+.destino-link:focus-visible {
+  outline: 3px solid #006b8f;
+  outline-offset: 4px;
 }
 
 .destinos-grid {
@@ -158,6 +298,7 @@ h3 {
   width: 100%;
   height: 220px;
   object-fit: cover;
+  flex-shrink: 0;
   display: block;
 }
 
@@ -173,6 +314,44 @@ h3 {
 
 .destino p {
   margin-bottom: 20px;
+}
+
+.destino-link .destino {
+  height: 100%;
+  cursor: pointer;
+}
+
+.destino-em-breve {
+  background-color: #f7fbfc;
+  box-shadow: none;
+}
+
+.destino-placeholder {
+  height: 220px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #e0f3f8, #f7fbfc);
+  color: #006b8f;
+  font-weight: bold;
+  text-align: center;
+}
+
+.destino-cta,
+.destino-status {
+  display: inline-block;
+  align-self: flex-start;
+  margin: auto 20px 20px;
+}
+
+.destino-cta {
+  padding: 9px 13px;
+  border-radius: 8px;
+  background-color: #006b8f;
+  color: #ffffff;
+  font-weight: bold;
 }
 
 .imagem-destino {
@@ -462,8 +641,30 @@ h3 {
     font-size: 0.95rem;
   }
 
-  .home-header nav ul {
+  .home-header .menu-principal {
     gap: 8px 14px;
+  }
+
+  .nav-dropdown {
+    position: static;
+  }
+
+  .nav-dropdown::after {
+    display: none;
+  }
+
+  .submenu-destinos {
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    width: 100%;
+    transform: translateY(-6px);
+  }
+
+  .nav-dropdown:hover .submenu-destinos,
+  .nav-dropdown:focus-within .submenu-destinos,
+  .nav-dropdown.is-open .submenu-destinos {
+    transform: translateY(0);
   }
 
   section {
@@ -475,7 +676,8 @@ h3 {
     gap: 22px;
   }
 
-  .destino img {
+  .destino img,
+  .destino-placeholder {
     height: 190px;
   }
 
