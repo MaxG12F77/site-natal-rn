@@ -426,16 +426,20 @@ h3 {
 }
 
 .destino-cta {
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   align-self: center;
-  width: fit-content;
-  max-width: calc(100% - 40px);
+  width: calc(100% - 32px);
+  max-width: 260px;
+  min-height: 44px;
   margin: auto auto 20px;
-  padding: 9px 13px;
+  padding: 9px 10px;
   border-radius: 8px;
   background-color: #006b8f;
   color: #ffffff;
   font-weight: bold;
+  text-align: center;
   white-space: nowrap;
 }
 
@@ -445,17 +449,12 @@ h3 {
   margin: auto 20px 20px;
 }
 
-.destino-cta-artistas,
 .destino-cta-longo {
-  max-width: 100%;
-  padding-right: 8px;
-  padding-left: 8px;
+  font-size: 0.95rem;
 }
 
 .destino-cta-extra-longo {
-  padding-right: 8px;
-  padding-left: 8px;
-  font-size: 0.94rem;
+  font-size: 0.86rem;
 }
 
 .imagem-destino {
