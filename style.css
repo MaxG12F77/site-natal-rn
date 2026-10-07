@@ -732,7 +732,8 @@ h3 {
 @media (max-width: 650px) {
   .home-header {
     min-height: 360px;
-    padding: 44px 18px;
+    padding: 36px 18px 44px;
+    justify-content: flex-start;
     background-position: center center;
   }
 
