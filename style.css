@@ -766,10 +766,13 @@ h3 {
   }
 
   .nav-dropdown-toggle {
-    min-width: 16px;
-    min-height: 36px;
-    padding-right: 5px;
-    padding-left: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    min-width: 32px;
+    min-height: 38px;
+    padding: 0;
   }
 
   .nav-dropdown {
@@ -790,6 +793,7 @@ h3 {
   }
 
   .nav-dropdown-toggle span[aria-hidden="true"] {
+    font-size: 1.05rem;
     transition: none;
   }
 
