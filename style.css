@@ -92,15 +92,30 @@ section {
 .home-header h1 {
   margin: 0 0 12px;
   font-size: 3rem;
+  font-weight: 800;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.32);
 }
 
 .home-header p {
   margin: 0;
+  color: #eaf6f8;
   font-size: 1.15rem;
+  font-weight: 500;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.28);
 }
 
 .home-header nav {
   position: relative;
+  width: fit-content;
+  max-width: calc(100vw - 32px);
+  margin-top: 28px;
+  padding: 8px;
+  background: rgba(5, 67, 82, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .home-header .menu-principal {
@@ -108,24 +123,43 @@ section {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 12px 22px;
+  gap: 4px;
+  margin: 0;
 }
 
 .home-header .menu-principal > li {
   margin: 0;
 }
 
-.home-header nav a,
+.home-header .menu-principal > li > a,
+.nav-dropdown-topo > a,
 .nav-dropdown-toggle {
   color: #ffffff;
   font-weight: bold;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+  text-decoration: none;
+  text-shadow: none;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
-.home-header nav a:hover,
-.nav-dropdown-toggle:hover {
-  color: #d7eef5;
+.home-header .menu-principal > li > a,
+.nav-dropdown-topo > a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 8px 12px;
+  border-radius: 10px;
+}
+
+.home-header .menu-principal > li > a:hover,
+.home-header .menu-principal > li > a:focus-visible,
+.nav-dropdown-topo > a:hover,
+.nav-dropdown-topo > a:focus-visible,
+.nav-dropdown-toggle:hover,
+.nav-dropdown-toggle:focus-visible {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
   text-decoration: none;
+  outline: none;
 }
 
 .nav-dropdown {
@@ -145,37 +179,69 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2px;
+  gap: 0;
+  border-radius: 10px;
+  transition: background-color 0.2s ease;
+}
+
+.nav-dropdown-topo:hover,
+.nav-dropdown-topo:focus-within {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .nav-dropdown-toggle {
-  min-width: 34px;
-  min-height: 34px;
-  padding: 4px;
+  min-width: 22px;
+  min-height: 38px;
+  padding: 8px 10px 8px 0;
+  border-radius: 10px;
   border: 0;
   background: transparent;
   cursor: pointer;
   font: inherit;
 }
 
+.nav-dropdown-toggle span[aria-hidden="true"] {
+  display: inline-block;
+  font-size: 0.7rem;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+.nav-dropdown-topo > a {
+  padding-right: 6px;
+}
+
+.nav-dropdown-topo > a:hover,
+.nav-dropdown-topo > a:focus-visible,
+.nav-dropdown-toggle:hover,
+.nav-dropdown-toggle:focus-visible {
+  background: transparent;
+}
+
+.nav-dropdown:hover .nav-dropdown-toggle span[aria-hidden="true"],
+.nav-dropdown:focus-within .nav-dropdown-toggle span[aria-hidden="true"],
+.nav-dropdown.is-open .nav-dropdown-toggle span[aria-hidden="true"] {
+  transform: rotate(180deg);
+}
+
 .submenu-destinos {
   position: absolute;
-  top: calc(100% + 8px);
-  left: 50%;
+  top: calc(100% + 10px);
+  left: 0;
   z-index: 10;
-  width: min(330px, calc(100vw - 32px));
-  padding: 10px;
+  width: min(320px, calc(100vw - 32px));
+  padding: 8px;
   margin: 0;
   list-style: none;
   text-align: left;
-  background-color: #ffffff;
-  border: 1px solid #d7eef5;
-  border-radius: 10px;
-  box-shadow: 0 12px 28px rgba(0, 75, 99, 0.18);
+  background-color: #f9fcfd;
+  border: 1px solid rgba(7, 86, 107, 0.15);
+  border-radius: 14px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transform: translateX(-50%) translateY(-6px);
+  transform: translateY(-6px);
   transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
 }
 
@@ -185,7 +251,7 @@ section {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
-  transform: translateX(-50%) translateY(0);
+  transform: translateY(0);
 }
 
 .submenu-destinos li {
@@ -195,26 +261,45 @@ section {
 
 .submenu-destinos a,
 .submenu-em-breve {
+  position: relative;
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  min-height: 42px;
-  padding: 9px 10px;
-  border-radius: 8px;
-  color: #004b63;
+  min-height: 38px;
+  padding: 8px 34px 8px 10px;
+  border-radius: 9px;
+  color: #07566b;
   font-size: 0.95rem;
   font-weight: bold;
   text-decoration: none;
   text-shadow: none;
+  transition: background-color 0.18s ease, color 0.18s ease;
+}
+
+.submenu-destinos a::after {
+  content: "→";
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  color: #07566b;
+  opacity: 0;
+  transform: translate(6px, -50%);
+  transition: opacity 0.18s ease, transform 0.18s ease;
 }
 
 .submenu-destinos a:hover,
-.submenu-destinos a:focus {
-  background-color: #e0f3f8;
+.submenu-destinos a:focus-visible {
+  background-color: #e7f4f7;
   color: #004b63;
+  text-decoration: none;
   outline: none;
+}
+
+.submenu-destinos a:hover::after,
+.submenu-destinos a:focus-visible::after {
+  opacity: 1;
+  transform: translate(0, -50%);
 }
 
 .submenu-em-breve {
@@ -310,6 +395,7 @@ h3 {
 
 .destino h3 {
   margin-top: 20px;
+  text-align: center;
 }
 
 .destino p {
@@ -339,19 +425,37 @@ h3 {
   text-align: center;
 }
 
-.destino-cta,
+.destino-cta {
+  display: inline-block;
+  align-self: center;
+  width: fit-content;
+  max-width: calc(100% - 40px);
+  margin: auto auto 20px;
+  padding: 9px 13px;
+  border-radius: 8px;
+  background-color: #006b8f;
+  color: #ffffff;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
 .destino-status {
   display: inline-block;
   align-self: flex-start;
   margin: auto 20px 20px;
 }
 
-.destino-cta {
-  padding: 9px 13px;
-  border-radius: 8px;
-  background-color: #006b8f;
-  color: #ffffff;
-  font-weight: bold;
+.destino-cta-artistas,
+.destino-cta-longo {
+  max-width: 100%;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.destino-cta-extra-longo {
+  padding-right: 8px;
+  padding-left: 8px;
+  font-size: 0.94rem;
 }
 
 .imagem-destino {
